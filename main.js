@@ -1,7 +1,6 @@
 $(function () {
     function loadAll() {
-        console.log('hi');
-        var outlook = '';
+        var output = '';
         var URL = 'books.json';
         $.ajax({
             type: 'GET',
@@ -10,14 +9,13 @@ $(function () {
             success: function (data) {
                 var user = data.book;
                 for (var i = 0; i < user.length; i++) {
-                    outlook += "<div class='row2'>";
-                    outlook += "<div class='column2'>" + user[i].name + "</div>";
-                    outlook += "<div class = 'column2'>" + user[i].description + "</div>";
-                    outlook += "<div class='column2'>" + user[i].category + "</div>";
-                    outlook += "</div>";
+                    output += "<div class='row2'>";
+                    output += "<div class='column2'>" + user[i].name + "</div>";
+                    output += "<div class = 'column2'>" + user[i].description + "</div>";
+                    output += "<div class='column2'>" + user[i].category + "</div>";
+                    output += "</div>";
                 }
-                $('#content').html(outlook);
-                console.log(data);
+                $('#content').html(output);
             },
             error: function (errorThrow) {
                 console.log(errorThrow);
@@ -35,7 +33,7 @@ $(function () {
         }
         else {
 
-            var outlook = ' ';
+            var output = ' ';
             var URL = 'books.json';
             $.ajax({
                 type: 'GET',
@@ -45,16 +43,15 @@ $(function () {
                     var up_user = data.book;
                     for (var i = 0; i < up_user.length; i++) {
                         if (up_user[i].category === user) {
-                            outlook += "<div class='row2'>";
-                            outlook += "<div class='column2'>" + up_user[i].name + "</div>";
-                            outlook += "<div class = 'column2'>" + up_user[i].description + "</div>";
-                            outlook += "<div class='column2'>" + up_user[i].category + "</div>";
-                            outlook += "</div>";
+                            output += "<div class='row2'>";
+                            output += "<div class='column2'>" + up_user[i].name + "</div>";
+                            output += "<div class = 'column2'>" + up_user[i].description + "</div>";
+                            output += "<div class='column2'>" + up_user[i].category + "</div>";
+                            output += "</div>";
                         }
 
                     }
-                    $('#content').html(outlook);
-
+                    $('#content').html(output);
                 },
                 error: function (errorThrow) {
                     console.log(errorThrow);
